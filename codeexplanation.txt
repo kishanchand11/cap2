@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+
+# Update the package list
+RUN apt update
+
+# Install Apache2
+RUN apt install apache2 -y
+
+# Copy the current directory contents into the container at /var/www/html
+COPY . /var/www/html
+
+# Define the entry point to keep Apache running in the foreground
+ENTRYPOINT ["apachectl", "-D", "FOREGROUND"] or ENTRYPOINT apachectl -D foreground
